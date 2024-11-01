@@ -1,0 +1,48 @@
++-----------------------------------------------------+
+|                    HealthLine Logo                  |
+| --------------------------------------------------- |
+| Dashboard | Tickets | Staff Management | Reports |  |
+| Settings  | Notifications | Logout                 |
++-----------------------------------------------------+
+
+                   Dashboard Overview
++-----------------------------------------------------+
+| Active Tickets: 34   | Avg. Response Time: 15 min   |
+| Resolved Tickets: 80%| Notifications Sent: 240      |
+| Alerts: High ticket volume detected                 |
++-----------------------------------------------------+
+|   [View Detailed Dashboard]                         |
++-----------------------------------------------------+
+
+                   Ticket Management
++-----------------------------------------------------+
+| Ticket ID | Patient Name | Date Created | Priority |
+| ----------|--------------|--------------|----------|
+| #101      | John Doe     | 10/30/2024   | High     |
+| #102      | Jane Smith   | 10/28/2024   | Medium   |
+|                                                      
+|  [Filter Options]  [Bulk Actions: Resolve, Notify]  |
++-----------------------------------------------------+
+
+                   Staff Management
++-----------------------------------------------------+
+| Staff ID | Name         | Role         | Status    |
+| ---------|--------------|--------------|-----------|
+| 1        | Alice Brown  | Administrator| Active    |
+| 2        | Bob Johnson  | Support Staff| Active    |
+|                                                      
+|       [Add New Staff]  [Manage Roles]               |
++-----------------------------------------------------+
+
+                    Reporting & Analytics
++-----------------------------------------------------+
+| Generate Report: [Monthly] [Quarterly] [Custom]     |
+| Export Options: PDF | Excel                         |
+| Graphs and Visualizations                           |
++-----------------------------------------------------+
+
+                   Settings & System Configuration
++-----------------------------------------------------+
+| [Notification Settings] [Access Control] [Data Sec] |
+| Maintenance Mode: [On/Off Toggle]                   |
++-----------------------------------------------------+
