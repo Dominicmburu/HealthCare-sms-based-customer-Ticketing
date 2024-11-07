@@ -1,22 +1,27 @@
-import { Router, Request, Response, NextFunction } from 'express';
+import { Router } from 'express';
 import {
   createTicket,
   getTickets,
   getTicketById,
   updateTicket,
   deleteTicket,
+  incomingSmsHandler,
 } from '../controllers/ticketController';
 import { authenticate, authorize } from '../middlewares/authMiddleware';
-import { createTicketValidation } from '../validations/ticketValidation';
 import { validate } from '../middlewares/validationMiddleware';
+import { createTicketValidation } from '../validations/ticketValidation';
+import { updateTicketValidation } from '../validations/ticketValidation';
+
 
 const router = Router();
 
-router.post('/', createTicketValidation, validate, createTicket);
+router.post('/', authenticate, createTicketValidation, validate, createTicket);
+router.post('/incoming-sms', incomingSmsHandler);
 
-router.get('/', authenticate, authorize(['admin', 'staff', 'medical_support']), getTickets);
-router.get('/:id', authenticate, authorize(['admin', 'staff', 'medical_support']), getTicketById);
-router.put('/:id', authenticate, authorize(['admin', 'staff', 'medical_support']), updateTicket);
-router.delete('/:id', authenticate, authorize(['admin']), deleteTicket);
+router.use(authenticate);
+router.get('/', authorize(['patient', 'medical_support', 'admin']), getTickets);
+router.get('/:id', authorize(['patient', 'medical_support', 'admin']), getTicketById);
+router.put('/:id', authorize(['patient', 'medical_support', 'admin']), validate, updateTicketValidation, updateTicket);
+router.delete('/:id', authorize(['admin']), deleteTicket);
 
 export default router;

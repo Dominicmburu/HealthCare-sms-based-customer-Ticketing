@@ -3,7 +3,6 @@ import 'reflect-metadata';
 import app from './app';
 import { connectDB } from './config/ormconfig';
 
-
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;

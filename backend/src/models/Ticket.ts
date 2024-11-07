@@ -7,7 +7,6 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { User } from './User';
-import { IsEmail, IsEnum, IsNotEmpty } from 'class-validator';
 
 export type TicketStatus = 'open' | 'in_progress' | 'closed';
 
@@ -17,27 +16,43 @@ export class Ticket {
   id: number;
 
   @Column()
-  @IsNotEmpty()
   subject: string;
 
-  @Column()
-  @IsNotEmpty()
+  @Column('text')
   description: string;
 
-  @Column()
-  @IsEmail()
-  customerEmail: string;
-
-  @Column({ default: 'open' })
-  @IsEnum(['open', 'in_progress', 'closed'])
+  @Column({
+    type: 'enum',
+    enum: ['open', 'in_progress', 'closed'],
+    default: 'open',
+  })
   status: TicketStatus;
-
-  @ManyToOne(() => User, (user) => user.tickets)
-  assignedTo: User;
 
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @ManyToOne(() => User, (user) => user.tickets, { nullable: true })
+  assignedTo: User;
+
+  @Column()
+  patientPhoneNumber: string;
+
+  @Column({ nullable: true })
+  patientEmail: string;
+
+  @Column({ default: false })
+  emailSent: boolean;
+
+  @Column({ type: 'timestamp', nullable: true })
+  emailSentAt: Date | null;
+
+  @Column({ default: false })
+  smsSent: boolean;
+
+  @Column({ type: 'timestamp', nullable: true })
+  smsSentAt: Date | null;
+  
 }
