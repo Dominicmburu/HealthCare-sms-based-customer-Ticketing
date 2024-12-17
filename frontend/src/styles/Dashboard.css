@@ -2,69 +2,42 @@
   display: flex;
   justify-content: center;
   color: #fff;
-  width: 80%;
+  width: 100%;
   max-width: 100%;
-  margin: 50px auto;
+  margin: auto;
 }
 
 .sidebar {
-  width: 15%;
+  width: 25%;
   padding: 20px 0;
   display: flex;
   flex-direction: column;
   border: 1px solid #fff;
   border-radius: 30px;
   align-items: center;
+  justify-content: left;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+  background-color: #111;
 }
 
 .sidebar-links {
   list-style: none;
   padding: 0;
   width: 100%;
-}
-
-.sidebar-links li {
-  text-align: center;
-  padding: 15px 0;
-  cursor: pointer;
-  border-bottom: 1px solid #333;
-  margin: 5px 0;
-  color: #fff;
-  transition: background 0.3s, color 0.3s;
-}
-
-.sidebar-links li:hover {
-  background-color: #222;
-  color: #007bff;
-}
-
-.main-content {
-  flex: 1;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.header-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+  margin: 0;
 }
 
 .header-icons {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 
 .notification-icon {
-    font-size: 1.5em;
-    color: #007bff;
-    cursor: pointer;
-    transition: color 0.3s;
+  font-size: 1.5em;
+  color: #007bff;
+  cursor: pointer;
+  transition: color 0.3s;
 }
   
 .notification-icon:hover {
@@ -90,18 +63,21 @@
   justify-content: space-between;
   width: 100%;
   margin: 20px 0;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .ticket-card {
   background-color: #222;
   padding: 20px;
-  width: 15%;
   max-width: 100%;
   text-align: center;
   border-radius: 10px;
   border: 1px solid #007bff;
   font-size: 1.2em;
   color: #007bff;
+  box-sizing: border-box;
+  flex:1;
 }
 
 .ticket-search {
@@ -109,6 +85,7 @@
   gap: 10px;
   width: 100%;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .ticket-search input {
@@ -118,22 +95,24 @@
   border: 1px solid #333;
   background-color: #222;
   color: #fff;
+  box-sizing: border-box;
 }
 
 .filter-button {
-    padding: 8px 12px;
-    border-radius: 5px;
-    border: 1px solid #007bff;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-  }
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #007bff;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  box-sizing: border-box;
+}
   
-  .filter-button:hover {
-    background-color: #0056b3;
-    color: #fff;
-  }
+.filter-button:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
 
 
 .ticket-list {
@@ -155,7 +134,8 @@
   text-align: left;
   color: #fff;
   position: relative;
-  width: 30%;
+  /* width: 30%; */
+  flex:1;
   max-width: 100%;
   box-sizing: border-box;
 }
@@ -174,8 +154,16 @@
   text-transform: lowercase;
 }
 
-.ticket-item .status.in-progress {
+.ticket-item .status.open {
+  color: white;
+}
+
+.ticket-item .status.in_progress {
   background-color: #ff9800;
+}
+
+.ticket-item .status.closed {
+  background-color: red;
 }
 
 .ticket-item p {
@@ -208,5 +196,88 @@
 }
 
 .ticket-actions button:hover {
-    background-color: #007bff;
+  background-color: #007bff;
+}
+
+.dialog, .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialog-content, .modal-content {
+  background: #222;
+  color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+  border: 1px solid #007bff;
+}
+
+.dialog-content h3, .modal-content h3 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #007bff;
+}
+
+.dialog-content p, .modal-content p {
+  font-size: 1em;
+  color: #bbb;
+  margin-bottom: 20px;
+}
+
+.dialog-content button,
+.modal-content button {
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dialog-content button:first-child,
+.modal-content button:first-child {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.dialog-content button:first-child:hover,
+.modal-content button:first-child:hover {
+  background-color: #0056b3;
+}
+
+.dialog-content button:last-child,
+.modal-content button:last-child {
+  background-color: transparent;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+.dialog-content button:last-child:hover,
+.modal-content button:last-child:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .dialog-content, .modal-content {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .dialog-content h3, .modal-content h3 {
+    font-size: 1.2em;
+  }
 }

@@ -42,6 +42,7 @@ export const createTicket = async (req: AuthRequest, res: Response, next: NextFu
       patientPhoneNumber: user.phoneNumber,
       patientEmail: user.email,
       status: 'open',
+      createdBy: user,
     });
 
     let emailSent = false;
@@ -91,16 +92,29 @@ HealthLine Support Team`;
   }
 };
 
-export const getTickets: RequestHandler = async (req, res, next) => {
+// Get Tickets
+export const getTickets: RequestHandler = async (req: AuthRequest, res: Response, next: NextFunction) => {
   const ticketRepo = AppDataSource.getRepository(Ticket);
+  const userRole = req.user?.role;
+  const userId = req.user?.id;
 
   try {
-    const tickets = await ticketRepo.find({ relations: ['assignedTo'] });
+    const tickets = await ticketRepo.find({
+      where:
+        userRole === 'admin'
+          ? undefined
+          : userRole === 'patient'
+          ? { createdBy: { id: userId } }
+          : { assignedTo: { id: userId } },
+      relations: ['createdBy', 'assignedTo'],
+    });
+
     res.status(200).json(tickets);
   } catch (error) {
     next(error);
   }
 };
+
 
 export const getTicketById: RequestHandler = async (req, res, next) => {
   const ticketRepo = AppDataSource.getRepository(Ticket);
@@ -109,7 +123,7 @@ export const getTicketById: RequestHandler = async (req, res, next) => {
   try {
     const ticket = await ticketRepo.findOne({
       where: { id: ticketId },
-      relations: ['assignedTo'],
+      relations: ['createdBy', 'assignedTo'],
     });
     if (!ticket) {
       res.status(404).json({ message: 'Ticket not found.' });

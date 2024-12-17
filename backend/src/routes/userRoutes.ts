@@ -8,7 +8,7 @@ const router = Router();
 
 router.get('/', authenticate, getUsers);
 router.get('/:id', authenticate, getUserById);
-router.put('/:id', authenticate, authorize(['admin']), updateUserValidation, validate, updateUser );
+router.put('/:id', authenticate, authorize(['admin', 'patient']), updateUserValidation, validate, updateUser );
 router.delete('/:id', authenticate, authorize(['admin']), deleteUser);
 
 export default router;

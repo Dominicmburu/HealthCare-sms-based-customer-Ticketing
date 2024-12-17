@@ -34,8 +34,12 @@ export class Ticket {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne(() => User, (user) => user.tickets, { nullable: true })
-  assignedTo: User;
+  @ManyToOne(() => User, (user) => user.createdTickets, { nullable: true })
+  createdBy: User;
+
+  // Optional: Assigned support staff
+  @ManyToOne(() => User, (user) => user.assignedTickets, { nullable: true })
+  assignedTo: User | null;
 
   @Column()
   patientPhoneNumber: string;

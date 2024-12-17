@@ -1,0 +1,100 @@
+.settings-container {
+  width: 60%;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background-color: #111;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  border: 1px solid #007bff;
+}
+
+.settings-container h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-form label {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.settings-form input {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  background-color: #222;
+  color: #fff;
+}
+
+.settings-form input::placeholder {
+  color: #aaa;
+}
+
+.update-button {
+  padding: 12px 25px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.update-button:hover {
+  background-color: #0056b3;
+}
+
+.settings-form input:focus {
+  outline: none;
+  border-color: #0056b3;
+}
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialog-box {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  border
+}
+
+.dialog-box p {
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.dialog-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dialog-button:hover {
+  background-color: #0056b3;
+}
