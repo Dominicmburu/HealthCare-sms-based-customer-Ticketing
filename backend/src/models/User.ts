@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Ticket } from './Ticket';
 import { Length , IsEmail } from 'class-validator';
 
-export type UserRole = 'staff' | 'medical_support' | 'admin';
+export type UserRole = 'patient' | 'medical_support' | 'admin';
 
 @Entity()
 export class User {
@@ -18,10 +18,13 @@ export class User {
 
   @Column({
     type: 'enum',
-    enum: ['staff', 'medical_support', 'admin'],
-    default: 'staff',
+    enum: ['patient', 'medical_support', 'admin'],
+    default: 'patient',
   })
   role: UserRole;
+
+  @Column({ type: 'varchar', length: 15, default: 'N/A' })
+  phoneNumber: string;
 
   @OneToMany(() => Ticket, (ticket) => ticket.assignedTo)
   tickets: Ticket[];

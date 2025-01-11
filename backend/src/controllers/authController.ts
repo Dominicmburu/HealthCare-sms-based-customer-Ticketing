@@ -6,7 +6,7 @@ import { generateToken } from '../utils/jwt';
 
 export const register: RequestHandler = async (req, res, next) => {
   const userRepo = AppDataSource.getRepository(User);
-  const { email, password, role } = req.body;
+  const { email, password, role, phoneNumber } = req.body;
 
   try {
     let user = await userRepo.findOne({ where: { email } });
@@ -16,7 +16,7 @@ export const register: RequestHandler = async (req, res, next) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    user = userRepo.create({ email, password: hashedPassword, role });
+    user = userRepo.create({ email, password: hashedPassword, role, phoneNumber });
     await userRepo.save(user);
 
     const token = generateToken(user);
