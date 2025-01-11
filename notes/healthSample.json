@@ -1,0 +1,110 @@
+{
+    "Patients": [
+      {
+        "patient_id": 1,
+        "name": "John Doe",
+        "contact_number": "+1234567890",
+        "email": "john.doe@example.com",
+        "preferred_contact_method": "SMS"
+      },
+      {
+        "patient_id": 2,
+        "name": "Jane Smith",
+        "contact_number": "+0987654321",
+        "email": "jane.smith@example.com",
+        "preferred_contact_method": "Email"
+      }
+    ],
+    
+    "Tickets": [
+      {
+        "ticket_id": 101,
+        "patient_id": 1,
+        "created_at": "2024-10-30T10:00:00",
+        "updated_at": "2024-10-30T12:00:00",
+        "status": "New",
+        "priority": "High",
+        "channel": "SMS",
+        "description": "Inquiry about appointment scheduling"
+      },
+      {
+        "ticket_id": 102,
+        "patient_id": 2,
+        "created_at": "2024-10-30T11:00:00",
+        "updated_at": "2024-10-30T13:00:00",
+        "status": "In Progress",
+        "priority": "Medium",
+        "channel": "Email",
+        "description": "Need information on lab test results"
+      }
+    ],
+    
+    "Staff": [
+      {
+        "staff_id": 1,
+        "name": "Alice Brown",
+        "role": "Administrator",
+        "email": "alice.brown@example.com",
+        "phone_number": "+1112223333"
+      },
+      {
+        "staff_id": 2,
+        "name": "Bob Johnson",
+        "role": "Support Staff",
+        "email": "bob.johnson@example.com",
+        "phone_number": "+4445556666"
+      }
+    ],
+    
+    "Ticket_Responses": [
+      {
+        "response_id": 1001,
+        "ticket_id": 101,
+        "staff_id": 1,
+        "response_text": "Confirmed appointment availability for next week.",
+        "timestamp": "2024-10-30T12:00:00",
+        "response_type": "Patient Update"
+      },
+      {
+        "response_id": 1002,
+        "ticket_id": 102,
+        "staff_id": 2,
+        "response_text": "Lab results are pending; expect completion within 48 hours.",
+        "timestamp": "2024-10-30T13:00:00",
+        "response_type": "Patient Update"
+      }
+    ],
+    
+    "Notifications": [
+      {
+        "notification_id": 2001,
+        "ticket_id": 101,
+        "sent_to": "+1234567890",
+        "notification_type": "SMS",
+        "message": "Your ticket has been received and is being processed.",
+        "timestamp": "2024-10-30T10:05:00"
+      },
+      {
+        "notification_id": 2002,
+        "ticket_id": 102,
+        "sent_to": "jane.smith@example.com",
+        "notification_type": "Email",
+        "message": "We are currently reviewing your lab test results inquiry.",
+        "timestamp": "2024-10-30T11:05:00"
+      }
+    ],
+    
+    "User_Roles": [
+      {
+        "role_id": 1,
+        "role_name": "Administrator",
+        "permissions": "Access all tickets, manage system settings, and view analytics."
+      },
+      {
+        "role_id": 2,
+        "role_name": "Support Staff",
+        "permissions": "Access tickets and respond to patient inquiries."
+      }
+    ]
+  }
+  
