@@ -12,7 +12,6 @@ import { validate } from '../middlewares/validationMiddleware';
 import { createTicketValidation } from '../validations/ticketValidation';
 import { updateTicketValidation } from '../validations/ticketValidation';
 
-
 const router = Router();
 
 router.post('/', authenticate, createTicketValidation, validate, createTicket);
@@ -22,6 +21,6 @@ router.use(authenticate);
 router.get('/', authorize(['patient', 'medical_support', 'admin']), getTickets);
 router.get('/:id', authorize(['patient', 'medical_support', 'admin']), getTicketById);
 router.put('/:id', authorize(['patient', 'medical_support', 'admin']), validate, updateTicketValidation, updateTicket);
-router.delete('/:id', authorize(['admin']), deleteTicket);
+router.delete('/:id', authorize(['patient', 'medical_support', 'admin']), deleteTicket);
 
 export default router;

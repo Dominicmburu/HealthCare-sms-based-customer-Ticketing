@@ -23,9 +23,12 @@ export class User {
   })
   role: UserRole;
 
-  @Column({ type: 'varchar', length: 15, default: 'N/A' })
+  @Column({ type: 'varchar', length: 15, nullable: true })
   phoneNumber: string;
 
+  @OneToMany(() => Ticket, (ticket) => ticket.createdBy)
+  createdTickets: Ticket[];
+
   @OneToMany(() => Ticket, (ticket) => ticket.assignedTo)
-  tickets: Ticket[];
+  assignedTickets: Ticket[];
 }

@@ -1,0 +1,27 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+
+}
+
+.footer-content {
+  color: #fff;
+  padding: 10px 15px;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  font-size: 1em;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+  width: 75%;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    width: 80%;
+  }
+}
